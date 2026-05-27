@@ -1,0 +1,75 @@
+{
+  "id": "add-and-remove-from-cart",
+  "testPlanId": "1b7e3ea2-6358-4b5b-93c0-9bf4eaeb74b1",
+  "requirementId": "f6f822d3-af1d-4677-abfb-224dc4038d55",
+  "suiteName": "Product Listing SD - E2E",
+  "case": {
+    "id": "add-and-remove-from-cart",
+    "title": "Add product to cart and remove it",
+    "priority": "P1",
+    "platforms": [
+      "chrome",
+      "firefox",
+      "safari",
+      "edge"
+    ],
+    "preconditions": [],
+    "steps": [
+      {
+        "id": "open-login-page",
+        "action": "openUrl",
+        "targetDescription": "Open the application login page",
+        "value": "https://www.saucedemo.com/"
+      },
+      {
+        "id": "fill-username",
+        "action": "fill",
+        "targetDescription": "Enter username",
+        "locatorHint": "[data-test='username']",
+        "value": "standard_user"
+      },
+      {
+        "id": "fill-password",
+        "action": "fill",
+        "targetDescription": "Enter password",
+        "locatorHint": "[data-test='password']",
+        "value": "secret_sauce"
+      },
+      {
+        "id": "click-login",
+        "action": "tap",
+        "targetDescription": "Click login button",
+        "locatorHint": "[data-test='login-button']"
+      },
+      {
+        "id": "add-to-cart-backpack",
+        "action": "tap",
+        "targetDescription": "Click Add to Cart for Sauce Labs Backpack",
+        "locatorHint": "[data-test='add-to-cart-sauce-labs-backpack']"
+      },
+      {
+        "id": "assert-cart-count-1",
+        "action": "assertText",
+        "targetDescription": "Verify cart icon shows 1 item",
+        "locatorHint": ".shopping_cart_badge",
+        "assertion": "1"
+      },
+      {
+        "id": "remove-from-cart-backpack",
+        "action": "tap",
+        "targetDescription": "Click Remove for Sauce Labs Backpack",
+        "locatorHint": "[data-test='remove-sauce-labs-backpack']"
+      },
+      {
+        "id": "assert-cart-count-0",
+        "action": "assertHidden",
+        "targetDescription": "Verify cart icon is hidden (no items)",
+        "locatorHint": ".shopping_cart_badge"
+      }
+    ],
+    "tags": [
+      "@e2e",
+      "@regression"
+    ]
+  }
+}

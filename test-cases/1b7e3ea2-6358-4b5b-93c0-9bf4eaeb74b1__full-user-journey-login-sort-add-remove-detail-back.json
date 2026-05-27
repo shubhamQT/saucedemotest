@@ -1,0 +1,106 @@
+{
+  "id": "full-user-journey-login-sort-add-remove-detail-back",
+  "testPlanId": "1b7e3ea2-6358-4b5b-93c0-9bf4eaeb74b1",
+  "requirementId": "f6f822d3-af1d-4677-abfb-224dc4038d55",
+  "suiteName": "Product Listing SD - E2E",
+  "case": {
+    "id": "full-user-journey-login-sort-add-remove-detail-back",
+    "title": "Full user journey: login, sort, add to cart, remove, view detail, back",
+    "priority": "P0",
+    "platforms": [
+      "chrome",
+      "firefox",
+      "safari",
+      "edge"
+    ],
+    "preconditions": [],
+    "steps": [
+      {
+        "id": "open-login-page",
+        "action": "openUrl",
+        "targetDescription": "Open the application login page",
+        "value": "https://www.saucedemo.com/"
+      },
+      {
+        "id": "fill-username",
+        "action": "fill",
+        "targetDescription": "Enter username",
+        "locatorHint": "[data-test='username']",
+        "value": "standard_user"
+      },
+      {
+        "id": "fill-password",
+        "action": "fill",
+        "targetDescription": "Enter password",
+        "locatorHint": "[data-test='password']",
+        "value": "secret_sauce"
+      },
+      {
+        "id": "click-login",
+        "action": "tap",
+        "targetDescription": "Click login button",
+        "locatorHint": "[data-test='login-button']"
+      },
+      {
+        "id": "select-sort-low-to-high",
+        "action": "selectOption",
+        "targetDescription": "Select 'Price (Low to High)' from sort dropdown",
+        "locatorHint": "[data-test='product_sort_container']",
+        "value": "lohi"
+      },
+      {
+        "id": "add-to-cart-backpack",
+        "action": "tap",
+        "targetDescription": "Click Add to Cart for Sauce Labs Backpack",
+        "locatorHint": "[data-test='add-to-cart-sauce-labs-backpack']"
+      },
+      {
+        "id": "assert-cart-count-1",
+        "action": "assertText",
+        "targetDescription": "Verify cart icon shows 1 item",
+        "locatorHint": ".shopping_cart_badge",
+        "assertion": "1"
+      },
+      {
+        "id": "remove-from-cart-backpack",
+        "action": "tap",
+        "targetDescription": "Click Remove for Sauce Labs Backpack",
+        "locatorHint": "[data-test='remove-sauce-labs-backpack']"
+      },
+      {
+        "id": "assert-cart-count-0",
+        "action": "assertHidden",
+        "targetDescription": "Verify cart icon is hidden (no items)",
+        "locatorHint": ".shopping_cart_badge"
+      },
+      {
+        "id": "click-product-name",
+        "action": "tap",
+        "targetDescription": "Click on Sauce Labs Backpack product name",
+        "locatorHint": "[data-test='item-name-sauce-labs-backpack']"
+      },
+      {
+        "id": "assert-product-detail",
+        "action": "assertVisible",
+        "targetDescription": "Verify product detail page is displayed",
+        "locatorHint": ".inventory_details_desc_container"
+      },
+      {
+        "id": "back-to-products",
+        "action": "tap",
+        "targetDescription": "Click Back to Products button",
+        "locatorHint": "[data-test='back-to-products']"
+      },
+      {
+        "id": "assert-inventory-page",
+        "action": "assertVisible",
+        "targetDescription": "Verify inventory page is displayed again",
+        "locatorHint": ".inventory_list"
+      }
+    ],
+    "tags": [
+      "@e2e",
+      "@regression"
+    ]
+  }
+}

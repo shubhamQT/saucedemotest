@@ -1,0 +1,81 @@
+{
+  "id": "login-view-products-add-to-cart",
+  "testPlanId": "1b7e3ea2-6358-4b5b-93c0-9bf4eaeb74b1",
+  "requirementId": "f6f822d3-af1d-4677-abfb-224dc4038d55",
+  "suiteName": "Product Listing SD - E2E",
+  "case": {
+    "id": "login-view-products-add-to-cart",
+    "title": "Login, view product list, and add a product to cart",
+    "priority": "P0",
+    "platforms": [
+      "chrome",
+      "firefox",
+      "safari",
+      "edge"
+    ],
+    "preconditions": [],
+    "steps": [
+      {
+        "id": "open-login-page",
+        "action": "openUrl",
+        "targetDescription": "Open the application login page",
+        "value": "https://www.saucedemo.com/"
+      },
+      {
+        "id": "fill-username",
+        "action": "fill",
+        "targetDescription": "Enter username",
+        "locatorHint": "[data-test='username']",
+        "value": "standard_user"
+      },
+      {
+        "id": "fill-password",
+        "action": "fill",
+        "targetDescription": "Enter password",
+        "locatorHint": "[data-test='password']",
+        "value": "secret_sauce"
+      },
+      {
+        "id": "click-login",
+        "action": "tap",
+        "targetDescription": "Click login button",
+        "locatorHint": "[data-test='login-button']"
+      },
+      {
+        "id": "assert-inventory-page",
+        "action": "assertVisible",
+        "targetDescription": "Verify inventory page is displayed",
+        "locatorHint": ".inventory_list"
+      },
+      {
+        "id": "assert-products-visible",
+        "action": "assertCountGreaterThan",
+        "targetDescription": "Verify products are listed",
+        "locatorHint": ".inventory_item"
+      },
+      {
+        "id": "assert-product-details",
+        "action": "assertVisible",
+        "targetDescription": "Verify product name, price, description, and image are visible",
+        "locatorHint": ".inventory_item_name"
+      },
+      {
+        "id": "add-to-cart-backpack",
+        "action": "tap",
+        "targetDescription": "Click Add to Cart for Sauce Labs Backpack",
+        "locatorHint": "[data-test='add-to-cart-sauce-labs-backpack']"
+      },
+      {
+        "id": "assert-cart-count",
+        "action": "assertText",
+        "targetDescription": "Verify cart icon shows 1 item",
+        "locatorHint": ".shopping_cart_badge",
+        "assertion": "1"
+      }
+    ],
+    "tags": [
+      "@e2e",
+      "@regression"
+    ]
+  }
+}
