@@ -42,7 +42,7 @@ import {
 export class InventoryPage {
   private static readonly L = {
     openMenu: { strategy: 'css' as const, value: '#react-burger-menu-btn', actionKind: 'button' as const },
-    products: { strategy: 'text' as const, value: 'Products', actionKind: 'text' as const },
+    products: { strategy: 'css' as const, value: '.inventory_item', actionKind: 'class' as const },
     nameAToZ: { strategy: 'text' as const, value: 'Name (A to Z)', actionKind: 'text' as const },
     nameAToZ2: { strategy: 'text' as const, value: 'Name (A to Z) Name (Z to A) Price (low to high) Price (high to low)', actionKind: 'combobox' as const },
     item4Img: { strategy: 'css' as const, value: '#item_4_img_link', actionKind: 'link' as const },
