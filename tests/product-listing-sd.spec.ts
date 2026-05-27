@@ -18,7 +18,7 @@ test('Login, view product list, and add a product to cart', { tag: ["@e2e","@reg
     await inventoryPage.expectProductsVisible();
   });
   await test.step('Assert count greater than — Verify products are listed', async () => {
-    await inventoryPage.expectProductsCountGreaterThan(0);
+    await inventoryPage.expectProductsCount(6);
   });
   await test.step('Assert visible — Verify product name, price, description, and image are visible', async () => {
     await inventoryPage.expectSauceLabsBackpackVisible();
