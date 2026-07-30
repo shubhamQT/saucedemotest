@@ -1,0 +1,79 @@
+{
+  "id": "821a104d-78ec-4ce9-b55c-d30f805746ba",
+  "testPlanId": "f5111ed9-0bef-4404-8ee9-33bc60255fc1",
+  "requirementId": "ae1d1ba2-a2de-4894-beb9-bf19409b3f4c",
+  "suiteName": "demo31 — Product Inventory and Cart (Sauce Demo)",
+  "case": {
+    "id": "821a104d-78ec-4ce9-b55c-d30f805746ba",
+    "title": "Remove a product from cart page and verify empty cart and badge cleared",
+    "priority": "P1",
+    "platforms": [
+      "chrome"
+    ],
+    "preconditions": [
+      "User has valid credentials: standard_user / secret_sauce"
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "action": "openUrl",
+        "targetDescription": "Open login page",
+        "value": "https://www.saucedemo.com/"
+      },
+      {
+        "id": "s2",
+        "action": "fill",
+        "targetDescription": "Username",
+        "locatorHint": "#user-name",
+        "value": "standard_user"
+      },
+      {
+        "id": "s3",
+        "action": "fill",
+        "targetDescription": "Password",
+        "locatorHint": "#password",
+        "value": "secret_sauce"
+      },
+      {
+        "id": "s4",
+        "action": "tap",
+        "targetDescription": "Login",
+        "locatorHint": "#login-button"
+      },
+      {
+        "id": "s5",
+        "action": "tap",
+        "targetDescription": "Add Backpack",
+        "locatorHint": "button[data-test='add-to-cart-sauce-labs-backpack']"
+      },
+      {
+        "id": "s6",
+        "action": "tap",
+        "targetDescription": "Open cart",
+        "locatorHint": ".shopping_cart_link"
+      },
+      {
+        "id": "s7",
+        "action": "tap",
+        "targetDescription": "Remove Backpack from cart",
+        "locatorHint": "button[data-test='remove-sauce-labs-backpack']"
+      },
+      {
+        "id": "s8",
+        "action": "assertCount",
+        "targetDescription": "Cart has 0 items",
+        "locatorHint": ".cart_item"
+      },
+      {
+        "id": "s9",
+        "action": "assertHidden",
+        "targetDescription": "Cart badge not visible when empty",
+        "locatorHint": ".shopping_cart_badge"
+      }
+    ],
+    "tags": [
+      "@functional",
+      "@regression"
+    ]
+  }
+}

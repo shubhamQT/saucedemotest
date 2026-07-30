@@ -1,0 +1,99 @@
+{
+  "id": "12ae03d7-c889-4a18-a376-1cc20c25ed89",
+  "testPlanId": "f5111ed9-0bef-4404-8ee9-33bc60255fc1",
+  "requirementId": "ae1d1ba2-a2de-4894-beb9-bf19409b3f4c",
+  "suiteName": "demo31 — Product Inventory and Cart (Sauce Demo)",
+  "case": {
+    "id": "12ae03d7-c889-4a18-a376-1cc20c25ed89",
+    "title": "Cart badge appears when adding items and disappears when all items removed",
+    "priority": "P1",
+    "platforms": [
+      "chrome"
+    ],
+    "preconditions": [
+      "User has valid credentials: standard_user / secret_sauce; Start with empty cart"
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "action": "openUrl",
+        "targetDescription": "Open login page",
+        "value": "https://www.saucedemo.com/"
+      },
+      {
+        "id": "s2",
+        "action": "fill",
+        "targetDescription": "Username",
+        "locatorHint": "#user-name",
+        "value": "standard_user"
+      },
+      {
+        "id": "s3",
+        "action": "fill",
+        "targetDescription": "Password",
+        "locatorHint": "#password",
+        "value": "secret_sauce"
+      },
+      {
+        "id": "s4",
+        "action": "tap",
+        "targetDescription": "Login",
+        "locatorHint": "#login-button"
+      },
+      {
+        "id": "s5",
+        "action": "assertHidden",
+        "targetDescription": "Cart badge not visible initially",
+        "locatorHint": ".shopping_cart_badge"
+      },
+      {
+        "id": "s6",
+        "action": "tap",
+        "targetDescription": "Add Backpack",
+        "locatorHint": "button[data-test='add-to-cart-sauce-labs-backpack']"
+      },
+      {
+        "id": "s7",
+        "action": "assertText",
+        "targetDescription": "Cart badge 1",
+        "locatorHint": ".shopping_cart_badge",
+        "assertion": "1"
+      },
+      {
+        "id": "s8",
+        "action": "tap",
+        "targetDescription": "Add Bike Light",
+        "locatorHint": "button[data-test='add-to-cart-sauce-labs-bike-light']"
+      },
+      {
+        "id": "s9",
+        "action": "assertText",
+        "targetDescription": "Cart badge 2",
+        "locatorHint": ".shopping_cart_badge",
+        "assertion": "2"
+      },
+      {
+        "id": "s10",
+        "action": "tap",
+        "targetDescription": "Remove Backpack",
+        "locatorHint": "button[data-test='remove-sauce-labs-backpack']"
+      },
+      {
+        "id": "s11",
+        "action": "tap",
+        "targetDescription": "Remove Bike Light",
+        "locatorHint": "button[data-test='remove-sauce-labs-bike-light']"
+      },
+      {
+        "id": "s12",
+        "action": "assertHidden",
+        "targetDescription": "Cart badge hidden after removing all",
+        "locatorHint": ".shopping_cart_badge"
+      }
+    ],
+    "tags": [
+      "@functional",
+      "@regression"
+    ]
+  }
+}

@@ -1,0 +1,68 @@
+{
+  "id": "955d35fc-4944-4c71-98ac-10eed7368035",
+  "testPlanId": "f5111ed9-0bef-4404-8ee9-33bc60255fc1",
+  "requirementId": "ae1d1ba2-a2de-4894-beb9-bf19409b3f4c",
+  "suiteName": "demo31 — Product Inventory and Cart (Sauce Demo)",
+  "case": {
+    "id": "955d35fc-4944-4c71-98ac-10eed7368035",
+    "title": "Hover over locked product or restricted action shows 'Product is unavailable' tooltip",
+    "priority": "P2",
+    "platforms": [
+      "chrome"
+    ],
+    "preconditions": [
+      "User has valid credentials: standard_user / secret_sauce; Inventory loaded; A locked/unavailable product or restricted action is present"
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "action": "openUrl",
+        "targetDescription": "Open login page",
+        "value": "https://www.saucedemo.com/"
+      },
+      {
+        "id": "s2",
+        "action": "fill",
+        "targetDescription": "Username",
+        "locatorHint": "#user-name",
+        "value": "standard_user"
+      },
+      {
+        "id": "s3",
+        "action": "fill",
+        "targetDescription": "Password",
+        "locatorHint": "#password",
+        "value": "secret_sauce"
+      },
+      {
+        "id": "s4",
+        "action": "tap",
+        "targetDescription": "Login",
+        "locatorHint": "#login-button"
+      },
+      {
+        "id": "s5",
+        "action": "hover",
+        "targetDescription": "Hover locked product/restricted control",
+        "locatorHint": ".inventory_item.locked, .inventory_item.disabled, .btn_disabled"
+      },
+      {
+        "id": "s6",
+        "action": "wait",
+        "targetDescription": "Wait for tooltip",
+        "value": "500"
+      },
+      {
+        "id": "s7",
+        "action": "assertContainsText",
+        "targetDescription": "Tooltip text",
+        "locatorHint": "[role='tooltip'], .tooltip",
+        "assertion": "Product is unavailable"
+      }
+    ],
+    "tags": [
+      "@functional",
+      "@regression"
+    ]
+  }
+}

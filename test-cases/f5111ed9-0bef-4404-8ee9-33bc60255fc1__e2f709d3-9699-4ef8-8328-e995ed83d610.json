@@ -1,0 +1,100 @@
+{
+  "id": "e2f709d3-9699-4ef8-8328-e995ed83d610",
+  "testPlanId": "f5111ed9-0bef-4404-8ee9-33bc60255fc1",
+  "requirementId": "ae1d1ba2-a2de-4894-beb9-bf19409b3f4c",
+  "suiteName": "demo31 — Product Inventory and Cart (Sauce Demo)",
+  "case": {
+    "id": "e2f709d3-9699-4ef8-8328-e995ed83d610",
+    "title": "Remove a product from inventory page and verify cart badge decrements and cart content updates",
+    "priority": "P0",
+    "platforms": [
+      "chrome"
+    ],
+    "preconditions": [
+      "User has valid credentials: standard_user / secret_sauce"
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "action": "openUrl",
+        "targetDescription": "Open login page",
+        "value": "https://www.saucedemo.com/"
+      },
+      {
+        "id": "s2",
+        "action": "fill",
+        "targetDescription": "Username",
+        "locatorHint": "#user-name",
+        "value": "standard_user"
+      },
+      {
+        "id": "s3",
+        "action": "fill",
+        "targetDescription": "Password",
+        "locatorHint": "#password",
+        "value": "secret_sauce"
+      },
+      {
+        "id": "s4",
+        "action": "tap",
+        "targetDescription": "Login",
+        "locatorHint": "#login-button"
+      },
+      {
+        "id": "s5",
+        "action": "tap",
+        "targetDescription": "Add Backpack",
+        "locatorHint": "button[data-test='add-to-cart-sauce-labs-backpack']"
+      },
+      {
+        "id": "s6",
+        "action": "tap",
+        "targetDescription": "Add Bike Light",
+        "locatorHint": "button[data-test='add-to-cart-sauce-labs-bike-light']"
+      },
+      {
+        "id": "s7",
+        "action": "assertText",
+        "targetDescription": "Cart badge is 2",
+        "locatorHint": ".shopping_cart_badge",
+        "assertion": "2"
+      },
+      {
+        "id": "s8",
+        "action": "tap",
+        "targetDescription": "Remove Bike Light from inventory",
+        "locatorHint": "button[data-test='remove-sauce-labs-bike-light']"
+      },
+      {
+        "id": "s9",
+        "action": "assertText",
+        "targetDescription": "Cart badge is 1",
+        "locatorHint": ".shopping_cart_badge",
+        "assertion": "1"
+      },
+      {
+        "id": "s10",
+        "action": "tap",
+        "targetDescription": "Open cart",
+        "locatorHint": ".shopping_cart_link"
+      },
+      {
+        "id": "s11",
+        "action": "assertContainsText",
+        "targetDescription": "Remaining product in cart",
+        "locatorHint": ".cart_item .inventory_item_name",
+        "assertion": "Sauce Labs Backpack"
+      },
+      {
+        "id": "s12",
+        "action": "assertHidden",
+        "targetDescription": "Removed product not in cart",
+        "locatorHint": ".cart_item:has(.inventory_item_name:text-is('Sauce Labs Bike Light'))"
+      }
+    ],
+    "tags": [
+      "@functional",
+      "@regression"
+    ]
+  }
+}

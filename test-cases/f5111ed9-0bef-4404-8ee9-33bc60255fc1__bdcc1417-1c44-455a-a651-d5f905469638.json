@@ -1,0 +1,101 @@
+{
+  "id": "bdcc1417-1c44-455a-a651-d5f905469638",
+  "testPlanId": "f5111ed9-0bef-4404-8ee9-33bc60255fc1",
+  "requirementId": "ae1d1ba2-a2de-4894-beb9-bf19409b3f4c",
+  "suiteName": "demo31 — Product Inventory and Cart (Sauce Demo)",
+  "case": {
+    "id": "bdcc1417-1c44-455a-a651-d5f905469638",
+    "title": "Add a product from inventory and verify cart badge, cart contents, and action buttons",
+    "priority": "P0",
+    "platforms": [
+      "chrome"
+    ],
+    "preconditions": [
+      "User has valid credentials: standard_user / secret_sauce"
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "action": "openUrl",
+        "targetDescription": "Open login page",
+        "value": "https://www.saucedemo.com/"
+      },
+      {
+        "id": "s2",
+        "action": "fill",
+        "targetDescription": "Username",
+        "locatorHint": "#user-name",
+        "value": "standard_user"
+      },
+      {
+        "id": "s3",
+        "action": "fill",
+        "targetDescription": "Password",
+        "locatorHint": "#password",
+        "value": "secret_sauce"
+      },
+      {
+        "id": "s4",
+        "action": "tap",
+        "targetDescription": "Login",
+        "locatorHint": "#login-button"
+      },
+      {
+        "id": "s5",
+        "action": "tap",
+        "targetDescription": "Add 'Sauce Labs Backpack' to cart",
+        "locatorHint": "button[data-test='add-to-cart-sauce-labs-backpack']"
+      },
+      {
+        "id": "s6",
+        "action": "assertContainsText",
+        "targetDescription": "Backpack button toggled to Remove",
+        "locatorHint": "button[data-test='remove-sauce-labs-backpack']",
+        "assertion": "Remove"
+      },
+      {
+        "id": "s7",
+        "action": "assertText",
+        "targetDescription": "Cart badge count is 1",
+        "locatorHint": ".shopping_cart_badge",
+        "assertion": "1"
+      },
+      {
+        "id": "s8",
+        "action": "tap",
+        "targetDescription": "Open cart via cart icon",
+        "locatorHint": ".shopping_cart_link"
+      },
+      {
+        "id": "s9",
+        "action": "assertContainsText",
+        "targetDescription": "Cart page title",
+        "locatorHint": ".title",
+        "assertion": "Your Cart"
+      },
+      {
+        "id": "s10",
+        "action": "assertContainsText",
+        "targetDescription": "Selected product appears in cart",
+        "locatorHint": ".cart_item .inventory_item_name",
+        "assertion": "Sauce Labs Backpack"
+      },
+      {
+        "id": "s11",
+        "action": "assertVisible",
+        "targetDescription": "Continue Shopping button",
+        "locatorHint": "[data-test='continue-shopping']"
+      },
+      {
+        "id": "s12",
+        "action": "assertVisible",
+        "targetDescription": "Checkout button",
+        "locatorHint": "[data-test='checkout']"
+      }
+    ],
+    "tags": [
+      "@functional",
+      "@regression"
+    ]
+  }
+}

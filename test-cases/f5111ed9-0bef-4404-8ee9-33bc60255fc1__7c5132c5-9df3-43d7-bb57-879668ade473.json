@@ -1,0 +1,81 @@
+{
+  "id": "7c5132c5-9df3-43d7-bb57-879668ade473",
+  "testPlanId": "f5111ed9-0bef-4404-8ee9-33bc60255fc1",
+  "requirementId": "ae1d1ba2-a2de-4894-beb9-bf19409b3f4c",
+  "suiteName": "demo31 — Product Inventory and Cart (Sauce Demo)",
+  "case": {
+    "id": "7c5132c5-9df3-43d7-bb57-879668ade473",
+    "title": "Empty cart: Checkout button disabled and Continue Shopping returns to inventory",
+    "priority": "P0",
+    "platforms": [
+      "chrome"
+    ],
+    "preconditions": [
+      "User has valid credentials: standard_user / secret_sauce; No items in cart"
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "action": "openUrl",
+        "targetDescription": "Open login page",
+        "value": "https://www.saucedemo.com/"
+      },
+      {
+        "id": "s2",
+        "action": "fill",
+        "targetDescription": "Username",
+        "locatorHint": "#user-name",
+        "value": "standard_user"
+      },
+      {
+        "id": "s3",
+        "action": "fill",
+        "targetDescription": "Password",
+        "locatorHint": "#password",
+        "value": "secret_sauce"
+      },
+      {
+        "id": "s4",
+        "action": "tap",
+        "targetDescription": "Login",
+        "locatorHint": "#login-button"
+      },
+      {
+        "id": "s5",
+        "action": "tap",
+        "targetDescription": "Open cart",
+        "locatorHint": ".shopping_cart_link"
+      },
+      {
+        "id": "s6",
+        "action": "assertContainsText",
+        "targetDescription": "Cart page title",
+        "locatorHint": ".title",
+        "assertion": "Your Cart"
+      },
+      {
+        "id": "s7",
+        "action": "assertDisabled",
+        "targetDescription": "Checkout button disabled",
+        "locatorHint": "[data-test='checkout']"
+      },
+      {
+        "id": "s8",
+        "action": "tap",
+        "targetDescription": "Continue Shopping button",
+        "locatorHint": "[data-test='continue-shopping']"
+      },
+      {
+        "id": "s9",
+        "action": "assertContainsText",
+        "targetDescription": "Back on Products page",
+        "locatorHint": ".title",
+        "assertion": "Products"
+      }
+    ],
+    "tags": [
+      "@functional",
+      "@regression"
+    ]
+  }
+}

@@ -2,5 +2,56 @@
   "auth": {
     "username": "standard_user",
     "password": "secret_sauce"
+  },
+  "loginSuccessAndInventoryPageRendersWith6CompleteProductCardsAndNavigationElements": {
+    "usernameInput": "standard_user",
+    "passwordInput": "secret_sauce"
+  },
+  "addAProductFromInventoryAndVerifyCartBadgeCartContentsAndActionButtons": {
+    "username": "standard_user",
+    "password": "secret_sauce"
+  },
+  "removeAProductFromInventoryPageAndVerifyCartBadgeDecrementsAndCartContentUpdates": {
+    "username": "standard_user",
+    "password": "secret_sauce"
+  },
+  "removeAProductFromCartPageAndVerifyEmptyCartAndBadgeCleared": {
+    "username": "standard_user",
+    "password": "secret_sauce"
+  },
+  "emptyCartCheckoutButtonDisabledAndContinueShoppingReturnsToInventory": {
+    "username": "standard_user",
+    "password": "secret_sauce"
+  },
+  "continueShoppingRetainsItemsInCartAndBadgeCount": {
+    "username": "standard_user",
+    "password": "secret_sauce"
+  },
+  "checkoutWithItemsNavigatesToCheckoutYourInformationPage": {
+    "username": "standard_user",
+    "password": "secret_sauce"
+  },
+  "sortingDropdownAppliesNameAndPriceSortsAndUpdatesProductOrderImmediately": {
+    "username": "standard_user",
+    "password": "secret_sauce",
+    "sortByNameZToA": "Name (Z to A)",
+    "sortByPriceLowToHigh": "Price (low to high)",
+    "sortByPriceHighToLow": "Price (high to low)"
+  },
+  "cartBadgeAppearsWhenAddingItemsAndDisappearsWhenAllItemsRemoved": {
+    "username": "standard_user",
+    "password": "secret_sauce"
+  },
+  "addAllProductsToCartShowsBadge6AndCartLists6Items": {
+    "username": "standard_user",
+    "password": "secret_sauce"
+  },
+  "cartDisplaysDefaultQuantity1ForAnAddedProduct": {
+    "username": "standard_user",
+    "password": "secret_sauce"
+  },
+  "hoverOverLockedProductOrRestrictedActionShowsProductIsUnavailableTooltip": {
+    "username": "standard_user",
+    "password": "secret_sauce"
   }
 }

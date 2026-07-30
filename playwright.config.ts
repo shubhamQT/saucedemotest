@@ -3,7 +3,8 @@ import { readFileSync } from "node:fs";
 import path from "node:path";
 
 // Select environment: TEST_ENV=staging npm test  (default: qa)
-const envName = process.env.TEST_ENV ?? "qa";
+// AUTOM_ENVIRONMENT is set by the Autonix CI workflow.
+const envName = process.env.TEST_ENV || process.env.AUTOM_ENVIRONMENT || "qa";
 
 let env: Record<string, unknown> = {};
 try {
@@ -34,6 +35,7 @@ export default defineConfig({
   fullyParallel: Boolean(env.fullyParallel ?? false),
   workers:       Number(env.workers        ?? 1),
   use: {
+    storageState:  ".auth/sauceLogin.json",
     baseURL:       String(env.baseURL       ?? "https://example.com"),
     headless:      env.headless !== false,
     trace:         (String(env.trace        ?? "retain-on-failure")) as "off" | "on" | "retain-on-failure" | "on-all-retries",
@@ -55,5 +57,7 @@ export default defineConfig({
   projects: [
     { name: browser, use: browserDevice(browser) },
   ],
-  reporter: [["list"], ["html", { open: "never" }], ["json", { outputFile: "logs/playwright-report.json" }]],
+  reporter: process.env.AUTOM_EXECUTION_PROVIDER === "browserstack"
+    ? [["list"], ["json", { outputFile: "logs/playwright-report.json" }]]
+    : [["list"], ["html", { open: "never" }], ["json", { outputFile: "logs/playwright-report.json" }]],
 });

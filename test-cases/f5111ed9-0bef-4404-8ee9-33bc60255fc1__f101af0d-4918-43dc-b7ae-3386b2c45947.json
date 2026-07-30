@@ -1,0 +1,104 @@
+{
+  "id": "f101af0d-4918-43dc-b7ae-3386b2c45947",
+  "testPlanId": "f5111ed9-0bef-4404-8ee9-33bc60255fc1",
+  "requirementId": "ae1d1ba2-a2de-4894-beb9-bf19409b3f4c",
+  "suiteName": "demo31 — Product Inventory and Cart (Sauce Demo)",
+  "case": {
+    "id": "f101af0d-4918-43dc-b7ae-3386b2c45947",
+    "title": "Add all products to cart shows badge 6 and cart lists 6 items",
+    "priority": "P1",
+    "platforms": [
+      "chrome"
+    ],
+    "preconditions": [
+      "User has valid credentials: standard_user / secret_sauce; Start with empty cart"
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "action": "openUrl",
+        "targetDescription": "Open login page",
+        "value": "https://www.saucedemo.com/"
+      },
+      {
+        "id": "s2",
+        "action": "fill",
+        "targetDescription": "Username",
+        "locatorHint": "#user-name",
+        "value": "standard_user"
+      },
+      {
+        "id": "s3",
+        "action": "fill",
+        "targetDescription": "Password",
+        "locatorHint": "#password",
+        "value": "secret_sauce"
+      },
+      {
+        "id": "s4",
+        "action": "tap",
+        "targetDescription": "Login",
+        "locatorHint": "#login-button"
+      },
+      {
+        "id": "s5",
+        "action": "tap",
+        "targetDescription": "Add Backpack",
+        "locatorHint": "button[data-test='add-to-cart-sauce-labs-backpack']"
+      },
+      {
+        "id": "s6",
+        "action": "tap",
+        "targetDescription": "Add Bike Light",
+        "locatorHint": "button[data-test='add-to-cart-sauce-labs-bike-light']"
+      },
+      {
+        "id": "s7",
+        "action": "tap",
+        "targetDescription": "Add Bolt T-Shirt",
+        "locatorHint": "button[data-test='add-to-cart-sauce-labs-bolt-t-shirt']"
+      },
+      {
+        "id": "s8",
+        "action": "tap",
+        "targetDescription": "Add Fleece Jacket",
+        "locatorHint": "button[data-test='add-to-cart-sauce-labs-fleece-jacket']"
+      },
+      {
+        "id": "s9",
+        "action": "tap",
+        "targetDescription": "Add Onesie",
+        "locatorHint": "button[data-test='add-to-cart-sauce-labs-onesie']"
+      },
+      {
+        "id": "s10",
+        "action": "tap",
+        "targetDescription": "Add Test.allTheThings() T-Shirt (Red)",
+        "locatorHint": "button[data-test='add-to-cart-test.allthethings()-t-shirt-(red)']"
+      },
+      {
+        "id": "s11",
+        "action": "assertText",
+        "targetDescription": "Cart badge 6",
+        "locatorHint": ".shopping_cart_badge",
+        "assertion": "6"
+      },
+      {
+        "id": "s12",
+        "action": "tap",
+        "targetDescription": "Open cart",
+        "locatorHint": ".shopping_cart_link"
+      },
+      {
+        "id": "s13",
+        "action": "assertCount",
+        "targetDescription": "Cart lists 6 items",
+        "locatorHint": ".cart_item"
+      }
+    ],
+    "tags": [
+      "@functional",
+      "@regression"
+    ]
+  }
+}

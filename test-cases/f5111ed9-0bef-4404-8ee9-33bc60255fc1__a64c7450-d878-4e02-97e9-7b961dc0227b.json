@@ -1,0 +1,120 @@
+{
+  "id": "a64c7450-d878-4e02-97e9-7b961dc0227b",
+  "testPlanId": "f5111ed9-0bef-4404-8ee9-33bc60255fc1",
+  "requirementId": "ae1d1ba2-a2de-4894-beb9-bf19409b3f4c",
+  "suiteName": "demo31 — Product Inventory and Cart (Sauce Demo)",
+  "case": {
+    "id": "a64c7450-d878-4e02-97e9-7b961dc0227b",
+    "title": "Continue Shopping retains items in cart and badge count",
+    "priority": "P1",
+    "platforms": [
+      "chrome"
+    ],
+    "preconditions": [
+      "User has valid credentials: standard_user / secret_sauce"
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "action": "openUrl",
+        "targetDescription": "Open login page",
+        "value": "https://www.saucedemo.com/"
+      },
+      {
+        "id": "s2",
+        "action": "fill",
+        "targetDescription": "Username",
+        "locatorHint": "#user-name",
+        "value": "standard_user"
+      },
+      {
+        "id": "s3",
+        "action": "fill",
+        "targetDescription": "Password",
+        "locatorHint": "#password",
+        "value": "secret_sauce"
+      },
+      {
+        "id": "s4",
+        "action": "tap",
+        "targetDescription": "Login",
+        "locatorHint": "#login-button"
+      },
+      {
+        "id": "s5",
+        "action": "tap",
+        "targetDescription": "Add Backpack",
+        "locatorHint": "button[data-test='add-to-cart-sauce-labs-backpack']"
+      },
+      {
+        "id": "s6",
+        "action": "tap",
+        "targetDescription": "Add Bike Light",
+        "locatorHint": "button[data-test='add-to-cart-sauce-labs-bike-light']"
+      },
+      {
+        "id": "s7",
+        "action": "assertText",
+        "targetDescription": "Cart badge is 2",
+        "locatorHint": ".shopping_cart_badge",
+        "assertion": "2"
+      },
+      {
+        "id": "s8",
+        "action": "tap",
+        "targetDescription": "Open cart",
+        "locatorHint": ".shopping_cart_link"
+      },
+      {
+        "id": "s9",
+        "action": "assertCount",
+        "targetDescription": "Two items listed in cart",
+        "locatorHint": ".cart_item"
+      },
+      {
+        "id": "s10",
+        "action": "tap",
+        "targetDescription": "Continue Shopping",
+        "locatorHint": "[data-test='continue-shopping']"
+      },
+      {
+        "id": "s11",
+        "action": "assertContainsText",
+        "targetDescription": "Returned to Products page",
+        "locatorHint": ".title",
+        "assertion": "Products"
+      },
+      {
+        "id": "s12",
+        "action": "assertText",
+        "targetDescription": "Cart badge remains 2",
+        "locatorHint": ".shopping_cart_badge",
+        "assertion": "2"
+      },
+      {
+        "id": "s13",
+        "action": "tap",
+        "targetDescription": "Open cart again",
+        "locatorHint": ".shopping_cart_link"
+      },
+      {
+        "id": "s14",
+        "action": "assertContainsText",
+        "targetDescription": "Backpack still present",
+        "locatorHint": ".cart_item .inventory_item_name",
+        "assertion": "Sauce Labs Backpack"
+      },
+      {
+        "id": "s15",
+        "action": "assertContainsText",
+        "targetDescription": "Bike Light still present",
+        "locatorHint": ".cart_item .inventory_item_name",
+        "assertion": "Sauce Labs Bike Light"
+      }
+    ],
+    "tags": [
+      "@functional",
+      "@regression"
+    ]
+  }
+}

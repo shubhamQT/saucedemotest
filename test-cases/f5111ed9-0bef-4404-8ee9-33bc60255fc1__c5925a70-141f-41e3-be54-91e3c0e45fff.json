@@ -1,0 +1,47 @@
+{
+  "id": "c5925a70-141f-41e3-be54-91e3c0e45fff",
+  "testPlanId": "f5111ed9-0bef-4404-8ee9-33bc60255fc1",
+  "requirementId": "ae1d1ba2-a2de-4894-beb9-bf19409b3f4c",
+  "suiteName": "demo31 — Product Inventory and Cart (Sauce Demo)",
+  "case": {
+    "id": "c5925a70-141f-41e3-be54-91e3c0e45fff",
+    "title": "Direct inventory access without authentication redirects to login page",
+    "priority": "P0",
+    "platforms": [
+      "chrome"
+    ],
+    "preconditions": [
+      "User is not authenticated"
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "action": "openUrl",
+        "targetDescription": "Try to access inventory page directly",
+        "value": "https://www.saucedemo.com/inventory.html"
+      },
+      {
+        "id": "s2",
+        "action": "assertVisible",
+        "targetDescription": "Username input visible (login page)",
+        "locatorHint": "#user-name"
+      },
+      {
+        "id": "s3",
+        "action": "assertVisible",
+        "targetDescription": "Password input visible (login page)",
+        "locatorHint": "#password"
+      },
+      {
+        "id": "s4",
+        "action": "assertVisible",
+        "targetDescription": "Login button visible",
+        "locatorHint": "#login-button"
+      }
+    ],
+    "tags": [
+      "@functional",
+      "@regression"
+    ]
+  }
+}

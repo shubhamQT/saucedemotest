@@ -1,0 +1,146 @@
+{
+  "id": "4a18a7e7-068b-4bae-b769-280a0530d832",
+  "testPlanId": "f5111ed9-0bef-4404-8ee9-33bc60255fc1",
+  "requirementId": "ae1d1ba2-a2de-4894-beb9-bf19409b3f4c",
+  "suiteName": "demo31 — Product Inventory and Cart (Sauce Demo)",
+  "case": {
+    "id": "4a18a7e7-068b-4bae-b769-280a0530d832",
+    "title": "Sorting dropdown applies Name and Price sorts and updates product order immediately",
+    "priority": "P0",
+    "platforms": [
+      "chrome"
+    ],
+    "preconditions": [
+      "User has valid credentials: standard_user / secret_sauce; Inventory loaded"
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "action": "openUrl",
+        "targetDescription": "Open login page",
+        "value": "https://www.saucedemo.com/"
+      },
+      {
+        "id": "s2",
+        "action": "fill",
+        "targetDescription": "Username",
+        "locatorHint": "#user-name",
+        "value": "standard_user"
+      },
+      {
+        "id": "s3",
+        "action": "fill",
+        "targetDescription": "Password",
+        "locatorHint": "#password",
+        "value": "secret_sauce"
+      },
+      {
+        "id": "s4",
+        "action": "tap",
+        "targetDescription": "Login",
+        "locatorHint": "#login-button"
+      },
+      {
+        "id": "s5",
+        "action": "assertVisible",
+        "targetDescription": "Sorting dropdown visible",
+        "locatorHint": ".product_sort_container"
+      },
+      {
+        "id": "s6",
+        "action": "assertContainsText",
+        "targetDescription": "Default first item (A to Z)",
+        "locatorHint": ".inventory_list .inventory_item:first-child .inventory_item_name",
+        "assertion": "Sauce Labs Backpack"
+      },
+      {
+        "id": "s7",
+        "action": "assertContainsText",
+        "targetDescription": "Default last item (A to Z)",
+        "locatorHint": ".inventory_list .inventory_item:last-child .inventory_item_name",
+        "assertion": "Test.allTheThings() T-Shirt (Red)"
+      },
+      {
+        "id": "s8",
+        "action": "selectOption",
+        "targetDescription": "Sort by Name (Z to A)",
+        "locatorHint": ".product_sort_container",
+        "value": "Name (Z to A)"
+      },
+      {
+        "id": "s9",
+        "action": "assertContainsText",
+        "targetDescription": "First item now Z to A",
+        "locatorHint": ".inventory_list .inventory_item:first-child .inventory_item_name",
+        "assertion": "Test.allTheThings() T-Shirt (Red)"
+      },
+      {
+        "id": "s10",
+        "action": "assertContainsText",
+        "targetDescription": "Last item now Z to A",
+        "locatorHint": ".inventory_list .inventory_item:last-child .inventory_item_name",
+        "assertion": "Sauce Labs Backpack"
+      },
+      {
+        "id": "s11",
+        "action": "selectOption",
+        "targetDescription": "Sort by Price (low to high)",
+        "locatorHint": ".product_sort_container",
+        "value": "Price (low to high)"
+      },
+      {
+        "id": "s12",
+        "action": "assertContainsText",
+        "targetDescription": "First item name low->high",
+        "locatorHint": ".inventory_list .inventory_item:first-child .inventory_item_name",
+        "assertion": "Sauce Labs Onesie"
+      },
+      {
+        "id": "s13",
+        "action": "assertContainsText",
+        "targetDescription": "First item price low->high",
+        "locatorHint": ".inventory_list .inventory_item:first-child .inventory_item_price",
+        "assertion": "$7.99"
+      },
+      {
+        "id": "s14",
+        "action": "assertContainsText",
+        "targetDescription": "Last item name low->high",
+        "locatorHint": ".inventory_list .inventory_item:last-child .inventory_item_name",
+        "assertion": "Sauce Labs Fleece Jacket"
+      },
+      {
+        "id": "s15",
+        "action": "assertContainsText",
+        "targetDescription": "Last item price low->high",
+        "locatorHint": ".inventory_list .inventory_item:last-child .inventory_item_price",
+        "assertion": "$49.99"
+      },
+      {
+        "id": "s16",
+        "action": "selectOption",
+        "targetDescription": "Sort by Price (high to low)",
+        "locatorHint": ".product_sort_container",
+        "value": "Price (high to low)"
+      },
+      {
+        "id": "s17",
+        "action": "assertContainsText",
+        "targetDescription": "First item name high->low",
+        "locatorHint": ".inventory_list .inventory_item:first-child .inventory_item_name",
+        "assertion": "Sauce Labs Fleece Jacket"
+      },
+      {
+        "id": "s18",
+        "action": "assertContainsText",
+        "targetDescription": "Last item name high->low",
+        "locatorHint": ".inventory_list .inventory_item:last-child .inventory_item_name",
+        "assertion": "Sauce Labs Onesie"
+      }
+    ],
+    "tags": [
+      "@functional",
+      "@regression"
+    ]
+  }
+}

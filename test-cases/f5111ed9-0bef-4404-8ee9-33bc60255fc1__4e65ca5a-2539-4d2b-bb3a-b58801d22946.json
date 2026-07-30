@@ -1,0 +1,116 @@
+{
+  "id": "4e65ca5a-2539-4d2b-bb3a-b58801d22946",
+  "testPlanId": "f5111ed9-0bef-4404-8ee9-33bc60255fc1",
+  "requirementId": "ae1d1ba2-a2de-4894-beb9-bf19409b3f4c",
+  "suiteName": "demo31 — Product Inventory and Cart (Sauce Demo)",
+  "case": {
+    "id": "4e65ca5a-2539-4d2b-bb3a-b58801d22946",
+    "title": "Login success and inventory page renders with 6 complete product cards and navigation elements",
+    "priority": "P0",
+    "platforms": [
+      "chrome"
+    ],
+    "preconditions": [
+      "User has valid credentials: standard_user / secret_sauce"
+    ],
+    "steps": [
+      {
+        "id": "s1",
+        "action": "openUrl",
+        "targetDescription": "Navigate to login page",
+        "value": "https://www.saucedemo.com/"
+      },
+      {
+        "id": "s2",
+        "action": "fill",
+        "targetDescription": "Username input",
+        "locatorHint": "#user-name",
+        "value": "standard_user"
+      },
+      {
+        "id": "s3",
+        "action": "fill",
+        "targetDescription": "Password input",
+        "locatorHint": "#password",
+        "value": "secret_sauce"
+      },
+      {
+        "id": "s4",
+        "action": "tap",
+        "targetDescription": "Login button",
+        "locatorHint": "#login-button"
+      },
+      {
+        "id": "s5",
+        "action": "assertContainsText",
+        "targetDescription": "Inventory page header",
+        "locatorHint": ".title",
+        "assertion": "Products"
+      },
+      {
+        "id": "s6",
+        "action": "assertVisible",
+        "targetDescription": "Product list container",
+        "locatorHint": ".inventory_list"
+      },
+      {
+        "id": "s7",
+        "action": "assertCount",
+        "targetDescription": "Total product cards",
+        "locatorHint": ".inventory_item"
+      },
+      {
+        "id": "s8",
+        "action": "assertCount",
+        "targetDescription": "Product images",
+        "locatorHint": ".inventory_item_img img"
+      },
+      {
+        "id": "s9",
+        "action": "assertCount",
+        "targetDescription": "Product names",
+        "locatorHint": ".inventory_item_name"
+      },
+      {
+        "id": "s10",
+        "action": "assertCount",
+        "targetDescription": "Product descriptions",
+        "locatorHint": ".inventory_item_desc"
+      },
+      {
+        "id": "s11",
+        "action": "assertCount",
+        "targetDescription": "Product prices",
+        "locatorHint": ".inventory_item_price"
+      },
+      {
+        "id": "s12",
+        "action": "assertCount",
+        "targetDescription": "Add to cart buttons",
+        "locatorHint": "button.btn_inventory, button[data-test^='add-to-cart-']"
+      },
+      {
+        "id": "s13",
+        "action": "assertVisible",
+        "targetDescription": "Menu button",
+        "locatorHint": "#react-burger-menu-btn"
+      },
+      {
+        "id": "s14",
+        "action": "assertVisible",
+        "targetDescription": "Shopping cart icon",
+        "locatorHint": ".shopping_cart_link"
+      },
+      {
+        "id": "s15",
+        "action": "assertVisible",
+        "targetDescription": "Sorting dropdown",
+        "locatorHint": ".product_sort_container"
+      }
+    ],
+    "tags": [
+      "@functional",
+      "@regression"
+    ]
+  }
+}
